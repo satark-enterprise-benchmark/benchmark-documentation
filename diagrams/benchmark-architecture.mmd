@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph org["satark-enterprise-benchmark"]
+    docs["benchmark-documentation"]
+    ofbiz["ofbiz-enterprise\nmodular monolith ERP"]
+    tb["thingsboard-iot\nIoT / rule engine"]
+    yas["yas-microservices\nSpring mesh + Kafka/CDC"]
+    ibm["ibm-hybrid-modernization\nLiberty + Quarkus strangler"]
+    odp["open-data-platform\nlakehouse / CDC"]
+    hrms["dotnet-hrms-stored-procedures\nASMX + MySQL SPs"]
+  end
+  docs --> ofbiz
+  docs --> tb
+  docs --> yas
+  docs --> ibm
+  docs --> odp
+  docs --> hrms
+  satark["Satark AI product\n(Phase 2+ integration)"] -. future .-> org

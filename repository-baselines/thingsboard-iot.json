@@ -1,0 +1,30 @@
+{
+  "name": "thingsboard-iot",
+  "org_url": "https://github.com/satark-enterprise-benchmark/thingsboard-iot",
+  "upstream_url": "https://github.com/thingsboard/thingsboard",
+  "default_branch": "master",
+  "baseline_sha": "1b7dee3e0b5729cf4d272677ec37c19c9f4bdb69",
+  "acquisition_date": "2026-11-16T21:10:24Z",
+  "license": "BUSL-1.1",
+  "license_notes": "Root LICENSE is Business Source License 1.1 (ThingsBoard 4.4+). Some file headers still dual-mark Apache-2.0 AND BUSL-1.1. GitHub NOASSERTION should be treated as BUSL-1.1 after LICENSE inspection.",
+  "maintained_status": "fork-of-active-upstream",
+  "docker_compose_available": false,
+  "docker_compose_notes": "No root/production compose. Black-box test compose under msa/black-box-tests. Benchmark adds infra-only docker-compose.benchmark.yml (Postgres + Redis + optional Kafka/Zookeeper).",
+  "docker_compose_paths": [
+    "benchmark/environment/docker-compose.benchmark.yml",
+    "msa/black-box-tests/src/test/resources/docker-compose.integration.yml"
+  ],
+  "messaging": ["in-memory queue (default)", "Apache Kafka (optional TB_QUEUE_TYPE=kafka)", "MQTT/CoAP/HTTP/LwM2M/SNMP device transports", "integration executors (Kafka/MQTT/HTTP/RabbitMQ/etc. MSA)"],
+  "databases": ["PostgreSQL (entities + default TS)", "TimescaleDB (optional TS)", "Cassandra (optional TS/hybrid)", "Redis/Valkey (optional cache)", "Citus (optional distributed Postgres)"],
+  "languages": ["Java", "TypeScript/Angular (ui-ngx)", "SQL", "CQL", "JavaScript/TBEL (rule/converter scripts)"],
+  "architecture_pattern": "modular monolith with optional microservices split (tb-core / tb-rule-engine / transport / js-executor) + Rule Engine + device transports",
+  "benchmark_purpose": "Phase 1 Satark AI Enterprise PII Benchmark — tenant/customer/user PII, device telemetry paths, Kafka/async flows, Postgres/Redis/Cassandra options",
+  "inaccessible_items": [
+    "Runtime startup not verified (JDK 25 and Maven missing on documentation host)",
+    "Official PE/CE packaged installers not executed",
+    "Cassandra hybrid mode not provisioned",
+    "Kafka cluster not started in Phase 1",
+    "UI production build not run",
+    "License key / Additional Use Grant production constraints not evaluated for benchmark lab use"
+  ]
+}
